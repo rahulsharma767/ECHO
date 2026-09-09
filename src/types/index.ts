@@ -1,0 +1,15 @@
+export type Classification="MATCH"|"ACCEPTABLE_ADLIB"|"DRIFT";
+export type ProcessingStage="RECEIVED"|"EXTRACTING"|"COMPARING_SCRIPT"|"COMPARING_PRIOR"|"CLASSIFYING"|"CLASSIFIED"|"NEEDS_REVIEW";
+export type HumanDecisionValue="ACCEPT"|"FLAG_FOR_RESHOOT";
+export type Unsubscribe=()=>void;
+export interface ConnectionStatusInfo{state:"LIVE"|"DEMO"|"DISCONNECTED";label:string;detail:string;since:string}
+export interface TakeEvent{event_id:string;scene_id:string;take_number:number;character:string;transcribed_line:string;timestamp:string;audio_ref:string}
+export interface ReferenceLine{scene_id:string;character:string;reference_line:string}
+export interface ClassificationResult{status:Classification;confidence:number;diverging_phrase:string|null;conflicts_with_take:number|null;reason:string|null}
+export interface HumanDecision{decision:HumanDecisionValue;decided_at:string;decided_by:string}
+export interface StageEvent{stage:ProcessingStage;at:string}
+export interface TakeRecord{event:TakeEvent;stageHistory:StageEvent[];currentStage:ProcessingStage;classification:ClassificationResult|null;humanDecision:HumanDecision|null}
+export interface SceneState{scene_id:string;reference_lines:ReferenceLine[];takes:TakeRecord[]}
+export interface SceneSummary{scene_id:string;takeCount:number;pendingDriftCount:number;lastActivityAt:string|null;overallStatus:"IDLE"|"LIVE"|"AWAITING_AD"|"CLEAR"}
+export interface LedgerEntry{scene_id:string;take_number:number;character:string;line:string;status:Classification;confidence:number;diverging_phrase:string|null;conflicts_with_take:number|null;reason:string|null;human_decision:HumanDecisionValue|null;timestamp:string}
+export interface EchoDataSource{subscribeConnectionStatus(cb:(v:ConnectionStatusInfo)=>void):Unsubscribe;subscribeScenes(cb:(v:SceneSummary[])=>void):Unsubscribe;subscribeSceneTakes(sceneId:string,cb:(v:SceneState)=>void):Unsubscribe;subscribeLedger(cb:(v:LedgerEntry[])=>void):Unsubscribe;submitHumanDecision(sceneId:string,takeNumber:number,decision:HumanDecisionValue):Promise<void>}
