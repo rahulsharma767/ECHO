@@ -1,0 +1,5 @@
+confluent-kafka
+google-cloud-firestore
+google-genai
+python-dotenv
+pytest

@@ -1,0 +1,29 @@
+[
+  {
+    "event_id": "evt_00040",
+    "scene_id": "SC14",
+    "take_number": 1,
+    "character": "MARCUS",
+    "transcribed_line": "I never trusted him.",
+    "timestamp": "2026-09-09T10:40:00Z",
+    "audio_ref": "gs://echo-demo-audio/sc14_take1.wav"
+  },
+  {
+    "event_id": "evt_00041",
+    "scene_id": "SC14",
+    "take_number": 2,
+    "character": "MARCUS",
+    "transcribed_line": "I didn't trust him.",
+    "timestamp": "2026-09-09T10:41:15Z",
+    "audio_ref": "gs://echo-demo-audio/sc14_take2.wav"
+  },
+  {
+    "event_id": "evt_00042",
+    "scene_id": "SC14",
+    "take_number": 3,
+    "character": "MARCUS",
+    "transcribed_line": "I never really trusted him.",
+    "timestamp": "2026-09-09T10:42:11Z",
+    "audio_ref": "gs://echo-demo-audio/sc14_take3.wav"
+  }
+]

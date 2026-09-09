@@ -1,0 +1,55 @@
+{
+  "SC14": {
+    "scene_id": "SC14",
+    "reference_lines": [
+      {
+        "character": "MARCUS",
+        "line": "I never trusted him."
+      }
+    ],
+    "takes": [
+      {
+        "take_number": 1,
+        "character": "MARCUS",
+        "line": "I never trusted him.",
+        "status": "MATCH",
+        "confidence": 0.98,
+        "diverging_phrase": null,
+        "conflicts_with_take": null,
+        "reason": null,
+        "human_decision": null,
+        "review_required": false,
+        "processing_state": "MATCH",
+        "timestamp": "2026-09-09T19:48:45.590733+00:00"
+      },
+      {
+        "take_number": 2,
+        "character": "MARCUS",
+        "line": "I didn't trust him.",
+        "status": "ACCEPTABLE_ADLIB",
+        "confidence": 0.86,
+        "diverging_phrase": "I didn't trust him.",
+        "conflicts_with_take": 1,
+        "reason": "Wording changed but meaning and rhythm remain close enough to intercut.",
+        "human_decision": null,
+        "review_required": false,
+        "processing_state": "ACCEPTABLE_ADLIB",
+        "timestamp": "2026-09-09T19:48:45.649823+00:00"
+      },
+      {
+        "take_number": 3,
+        "character": "MARCUS",
+        "line": "I never really trusted him.",
+        "status": "DRIFT",
+        "confidence": 0.91,
+        "diverging_phrase": "really",
+        "conflicts_with_take": 1,
+        "reason": "Adds \"really\", changing emphasis in a way that may prevent clean intercutting with the prior take.",
+        "human_decision": null,
+        "review_required": false,
+        "processing_state": "DRIFT",
+        "timestamp": "2026-09-09T19:48:45.679670+00:00"
+      }
+    ]
+  }
+}

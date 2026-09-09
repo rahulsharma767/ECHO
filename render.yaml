@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: echo-backend
+    runtime: python
+    plan: free
+    rootDir: person-b
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: ECHO_DEMO_MODE
+        value: "true"
+      - key: ECHO_ALLOWED_ORIGINS
+        sync: false
+
+  - type: web
+    name: echo-frontend
+    runtime: node
+    plan: free
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    startCommand: npm start -- --hostname 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: NEXT_PUBLIC_ECHO_API_URL
+        fromService:
+          name: echo-backend
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL

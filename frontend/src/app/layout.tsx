@@ -1,0 +1,2 @@
+import "./globals.css";import "@fontsource/ibm-plex-sans/400.css";import "@fontsource/ibm-plex-sans/500.css";import "@fontsource/ibm-plex-mono/400.css";import "@fontsource/ibm-plex-mono/500.css";import {AppShell} from "@/components/shell/AppShell";
+export const metadata={title:"ECHO — Dialogue Continuity",description:"Real-time dialogue continuity operations dashboard"};export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><AppShell>{children}</AppShell></body></html>}

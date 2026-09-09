@@ -1,0 +1,9 @@
+ECHO QUICK START
+
+1. Install Node.js 20.9+
+2. Extract this folder.
+3. Double-click RUN_ECHO.bat (Windows) OR run: npm install && npm run dev
+4. Open http://localhost:3000
+
+No API keys are required for the demo frontend.
+Best demo path: Script intake -> Use ECHO demo script -> Extract reference lines -> Start production -> SC14 -> Run full demo -> review Take 3 -> Flag for reshoot -> Continuity ledger.

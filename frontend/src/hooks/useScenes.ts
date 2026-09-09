@@ -1,0 +1,1 @@
+"use client";import {useEffect,useState} from "react";import {useEchoDataSource} from "@/lib/dataSourceContext";import type {SceneSummary} from "@/types";export function useScenes(){const source=useEchoDataSource();const [v,setV]=useState<SceneSummary[]>([]);useEffect(()=>source.subscribeScenes(setV),[source]);return v}
