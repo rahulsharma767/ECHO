@@ -1,0 +1,19 @@
+ECHO AD Dashboard — reconstructed runnable package
+
+Sources used:
+- Uploaded ECHO Master Build Playbook
+- Uploaded Claude-generated Person C component files and README
+- Official React Bits documentation and current open-source TS/Tailwind component sources
+- Official Next.js 16 documentation for current Webpack fallback behavior
+
+Key hardening changes:
+- Corrected React Bits default/named export mismatch that caused /ledger to crash.
+- Updated local React Bits components to current official TS/Tailwind source patterns.
+- Added React Bits CountUp and wired the existing AnimatedNumber API through it.
+- Added GSAP for the current official AnimatedContent implementation.
+- Pinned the verified Next.js/React/dependency versions used by the working environment.
+- Added Windows x64 Lightning CSS optional dependency.
+- Defaulted dev/build scripts to Next.js Webpack mode for Windows compatibility.
+- Added dependency doctor and Next root configuration.
+
+This package intentionally excludes node_modules and .next. Run npm install --include=optional before npm run dev.

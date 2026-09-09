@@ -1,0 +1,154 @@
+.squircle-shift {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--sq-bg, #050509);
+  color: var(--sq-tint, #8b5cf6);
+}
+
+.squircle-shift__wash,
+.squircle-shift__vignette,
+.squircle-shift__grid {
+  position: absolute;
+  inset: 0;
+}
+
+.squircle-shift__wash {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(99, 102, 241, 0.11), transparent 27%),
+    radial-gradient(circle at 58% 48%, rgba(236, 72, 153, 0.075), transparent 34%),
+    radial-gradient(circle at 38% 55%, rgba(139, 92, 246, 0.07), transparent 35%);
+  filter: blur(18px);
+  opacity: calc(0.7 * var(--sq-brightness, 1));
+  animation: squircle-wash calc(var(--sq-speed, 3.33s) * 1.8) ease-in-out infinite alternate;
+}
+
+.squircle-shift__grid {
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  grid-template-rows: repeat(7, minmax(0, 1fr));
+  gap: clamp(5px, 0.65vw, 13px);
+  padding: clamp(14px, 2.4vw, 34px);
+  transform: scale(1.06);
+}
+
+.squircle-shift__cell {
+  position: relative;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  border: var(--sq-thickness, 0.6px) solid transparent;
+  border-radius: 42% 58% 50% 50% / 56% 44% 58% 42%;
+  background:
+    linear-gradient(rgba(5, 5, 9, 0.92), rgba(5, 5, 9, 0.92)) padding-box,
+    conic-gradient(
+      from calc(var(--sq-i) * 17deg + 20deg),
+      rgba(79, 70, 229, 0.04),
+      rgba(99, 102, 241, 0.82),
+      rgba(236, 72, 153, 0.9),
+      rgba(124, 58, 237, 0.7),
+      rgba(79, 70, 229, 0.04)
+    ) border-box;
+  box-shadow:
+    0 0 3px rgba(99, 102, 241, calc(var(--sq-opacity) * 0.45)),
+    0 0 15px rgba(139, 92, 246, calc(var(--sq-opacity) * 0.32)),
+    inset 0 0 8px rgba(236, 72, 153, calc(var(--sq-opacity) * 0.12));
+  opacity: var(--sq-opacity);
+  transform: scale(var(--sq-scale));
+  animation:
+    squircle-morph calc(var(--sq-speed, 3.33s) * 1.9) ease-in-out var(--sq-delay) infinite alternate,
+    squircle-glow calc(var(--sq-speed, 3.33s) * 1.45) ease-in-out var(--sq-delay) infinite alternate;
+  will-change: transform, border-radius, opacity;
+}
+
+.squircle-shift__cell::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from calc(var(--sq-i) * 23deg),
+    transparent 0deg,
+    rgba(76, 91, 255, 0.0) 50deg,
+    rgba(76, 91, 255, 0.95) 92deg,
+    rgba(236, 72, 153, 0.9) 138deg,
+    transparent 190deg,
+    transparent 360deg
+  );
+  filter: blur(4px);
+  opacity: 0.5;
+  z-index: -1;
+  animation: squircle-spin calc(var(--sq-speed, 3.33s) * 2.8) linear var(--sq-delay) infinite;
+}
+
+.squircle-shift__cell:nth-child(5n + 1) {
+  border-radius: 48% 52% 34% 66% / 63% 39% 61% 37%;
+}
+
+.squircle-shift__cell:nth-child(7n + 2) {
+  border-radius: 30% 70% 54% 46% / 42% 58% 36% 64%;
+}
+
+.squircle-shift__cell:nth-child(11n + 4) {
+  opacity: calc(var(--sq-opacity) * 0.55);
+}
+
+.squircle-shift__cell:nth-child(13n + 3) {
+  opacity: calc(var(--sq-opacity) * 1.45);
+}
+
+.squircle-shift__vignette {
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--sq-cx, 50%) var(--sq-cy, 50%), transparent 0%, rgba(5, 5, 9, 0.18) 48%, rgba(5, 5, 9, 0.82) 100%),
+    linear-gradient(90deg, rgba(5, 5, 9, 0.5), transparent 18%, transparent 82%, rgba(5, 5, 9, 0.5));
+}
+
+@keyframes squircle-morph {
+  0% {
+    border-radius: 42% 58% 50% 50% / 56% 44% 58% 42%;
+    transform: scale(calc(var(--sq-scale) * 0.96)) rotate(-0.4deg);
+  }
+  50% {
+    border-radius: 58% 42% 37% 63% / 39% 61% 43% 57%;
+    transform: scale(var(--sq-scale)) rotate(0.4deg);
+  }
+  100% {
+    border-radius: 33% 67% 61% 39% / 61% 39% 55% 45%;
+    transform: scale(calc(var(--sq-scale) * 1.035)) rotate(-0.25deg);
+  }
+}
+
+@keyframes squircle-glow {
+  from { filter: saturate(0.85) brightness(0.82); }
+  to { filter: saturate(1.18) brightness(1.08); }
+}
+
+@keyframes squircle-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes squircle-wash {
+  from { transform: translate3d(-1%, -0.5%, 0) scale(0.98); }
+  to { transform: translate3d(1%, 0.8%, 0) scale(1.03); }
+}
+
+@media (max-width: 900px) {
+  .squircle-shift__grid {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-rows: repeat(7, minmax(0, 1fr));
+  }
+  .squircle-shift__cell:nth-child(n + 71) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .squircle-shift__wash,
+  .squircle-shift__cell,
+  .squircle-shift__cell::before {
+    animation: none !important;
+  }
+}

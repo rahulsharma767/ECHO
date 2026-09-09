@@ -1,0 +1,26 @@
+[
+  {
+    "event_id": "evt_00001",
+    "scene_id": "SC14",
+    "take_number": 1,
+    "character": "MARCUS",
+    "transcribed_line": "I never trusted him.",
+    "timestamp": "2026-09-09T10:42:11Z"
+  },
+  {
+    "event_id": "evt_00002",
+    "scene_id": "SC14",
+    "take_number": 2,
+    "character": "MARCUS",
+    "transcribed_line": "I didn't trust him.",
+    "timestamp": "2026-09-09T10:43:11Z"
+  },
+  {
+    "event_id": "evt_00003",
+    "scene_id": "SC14",
+    "take_number": 3,
+    "character": "MARCUS",
+    "transcribed_line": "I never really trusted him.",
+    "timestamp": "2026-09-09T10:44:11Z"
+  }
+]

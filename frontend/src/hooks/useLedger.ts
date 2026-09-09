@@ -1,0 +1,1 @@
+"use client";import {useEffect,useState} from "react";import {useEchoDataSource} from "@/lib/dataSourceContext";import type {LedgerEntry} from "@/types";export function useLedger(){const source=useEchoDataSource();const [v,setV]=useState<LedgerEntry[]>([]);useEffect(()=>source.subscribeLedger(setV),[source]);return v}
