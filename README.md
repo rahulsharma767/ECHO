@@ -1,44 +1,85 @@
-# ECHO — Real-Time Dialogue Continuity Agent
+<div align="center">
 
-> **Catch dialogue drift while you're still on set — not weeks later in the edit.**
+# ◈ ECHO
 
-ECHO is a real-time dialogue continuity agent designed for film production.
+### REAL-TIME DIALOGUE CONTINUITY AGENT
 
-During a shoot, actors perform multiple takes of the same scene. Small changes in dialogue are natural — but even a single added word can make takes difficult or impossible to intercut during editing.
+**Catch the line that breaks continuity — while you're still on set.**
 
-ECHO listens to incoming takes, compares the dialogue against the canonical screenplay and previous takes, detects meaningful variations, explains the difference, and routes uncertain cases to a human production supervisor.
+<br/>
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-ECHO-8B5CF6?style=for-the-badge&logo=render&logoColor=white)](https://echo-frontend-jk2f.onrender.com)
+[![GitHub](https://img.shields.io/badge/Source-GitHub-111827?style=for-the-badge&logo=github)](https://github.com/rahulsharma767/ECHO)
+[![License](https://img.shields.io/badge/License-MIT-06B6D4?style=for-the-badge)](LICENSE)
+
+<br/>
+
+**AI · Streaming · Human-in-the-Loop · Film Production**
+
+</div>
 
 ---
 
-## 🎬 The Problem
+# 🎬 The Problem
 
-Film scenes are rarely captured perfectly in one take.
+A film scene is almost never shot once.
 
-Actors may:
+An actor performs the same line again and again.
 
-- improvise a word
-- change a sentence
-- shorten a line
-- emphasize a phrase
-- accidentally contradict an earlier take
+And every take can be slightly different.
 
-These differences are often invisible during production.
+Maybe they change a word.
 
-The problem appears later when an editor tries to combine multiple takes.
+Maybe they shorten the sentence.
 
-A tiny dialogue difference can suddenly become a continuity problem.
+Maybe they improvise.
 
-### Traditional workflow
+Maybe they add emphasis.
+
+On set, that difference can feel completely harmless.
+
+**In the editing room, it can become a nightmare.**
+
+A tiny dialogue variation can make two otherwise identical takes impossible to intercut cleanly.
+
+By the time an editor discovers it:
+
+- the actors may have left
+- the location may be gone
+- lighting may have changed
+- production may have moved on
+- a reshoot can become expensive
+
+### The problem isn't that actors improvise.
+
+### The problem is discovering the consequence too late.
+
+---
+
+# ⚡ Meet ECHO
+
+**ECHO is a real-time dialogue continuity agent for film production.**
+
+It sits between the camera and the editing room.
+
+For every take, ECHO asks:
+
+> **"Does this dialogue still preserve continuity with the script and the takes we've already recorded?"**
+
+It doesn't just compare strings.
+
+It evaluates the current take against:
 
 ```text
-Shoot
-  ↓
-Shoot more takes
-  ↓
-Move into post-production
-  ↓
-Editor discovers dialogue mismatch
-  ↓
-Search through takes
-  ↓
-Reshoot / workaround
+                 ┌─────────────────────┐
+                 │  CANONICAL SCRIPT   │
+                 └──────────┬──────────┘
+                            │
+                            │
+CURRENT TAKE ───────────────┼────────────── PREVIOUS TAKES
+                            │
+                            ▼
+                   SEMANTIC ANALYSIS
+                            │
+                            ▼
+                    CONTINUITY RESULT
